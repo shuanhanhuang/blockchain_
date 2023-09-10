@@ -103,7 +103,10 @@
    (4). 最後請記得要儲存這個修改後的以太坊的創生檔案( genesis.json )在原來的目錄內。  
 
 8. 接下來，在三台電腦的在 Ubuntu 命令視窗中，各自輸入以下指令來的到每一個以太坊節點的以太坊區塊練的初始化創世區塊
-   如果三個 node 都在同一台電腦 genesis.json 放在 mypbc 資料夾下
+
+   ※如果三個 node 都在同一台電腦 genesis.json 放在 mypbc 資料夾下
+
+   ※如果三個 node 在不同台電腦 genesis.json 放在home下即可，不用放在node1, node2, node3下
   ```
   geth --datadir node1 init genesis.json
   ```
@@ -122,36 +125,36 @@
 - ### 請用以下指令來啟動每台電腦的以太坊節點
 1. 請在 node1 的電腦開啟一個 Ubuntu 命令視窗，並輸入以下指令來啟動 node1 的以太坊節點
   ```
-  geth --datadir node1 --networkid 12345 --port 30306 --syncmode "full" --nodiscover --http --http.port "5002" --http.addr "0.0.0.0" --http.corsdomain "*"  --http.api "personal,eth,net,web3,txpool,miner" --authrpc.addr "0.0.0.0" --authrpc.port "6002" --allow-insecure-unlock --unlock NODE1NODE1NODE1NODE1NODE1NODE1NODE1NODE1 --password password.txt console
+   geth --datadir node1 --networkid 12345  --nat extip:"10.0.129.2" --port "5021"  --syncmode "full" --nodiscover --http --http.port "5002" --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "personal,eth,net,web3,txpool,miner" --authrpc.addr "0.0.0.0" --authrpc.port "6002" --allow-insecure-unlock --unlock 0xBd367d52531889EbCBA1F53B47FB75ED334262b0 console
   ```
 
   以下命令啟動 node1 的以太坊，讓 Remix 可以透過 http://127.0.0.1:5002 連結
   ```
-   geth --datadir node1 --networkid 12345 --port 30306 --syncmode "full" --nodiscover --http --http.port "5002" --http.addr "0.0.0.0" --http.corsdomain "https://remix.ethereum.org" --vmdebug --http.api "personal,db,eth,net,web3,txpool,miner, debug" --authrpc.addr "0.0.0.0" --authrpc.port "6002" --allow-insecure-unlock --unlock NODE1NODE1NODE1NODE1NODE1NODE1NODE1NODE1 --password node1/password.txt --dev console
+   geth --datadir node1 --networkid 12345 --port 30306 --syncmode "full" --nodiscover --http --http.port "5002" --http.addr "0.0.0.0" --http.corsdomain "https://remix.ethereum.org" --vmdebug --http.api "personal,db,eth,net,web3,txpool,miner, debug" --authrpc.addr "0.0.0.0" --authrpc.port "6002" --allow-insecure-unlock --unlock 0xBd367d52531889EbCBA1F53B47FB75ED334262b0 console
   ```
 
   請注意，這個指令中的 "NODE1NODE1NODE1NODE1NODE1NODE1NODE1NODE1" 應該被替換為創建 node1 帳戶時得到的“密鑰的公共地址”。
   
 2. 請在 node2 的電腦開啟一個 Ubuntu 命令視窗，並輸入以下指令來啟動 node2 的以太坊節點
   ```
-  geth --datadir node2 --networkid 12345 --port 30307 --syncmode "full" --nodiscover --http --http.port "5003" --http.addr "0.0.0.0" --http.corsdomain "*"  --http.api "personal,eth,net,web3,txpool,miner" --authrpc.addr "0.0.0.0" --authrpc.port "6003" --allow-insecure-unlock --unlock 0xNODE2NODE2NODE2NODE2NODE2NODE2NODE2NODE2 --password password.txt console
+   geth --datadir node2 --networkid 12345 --nat extip:"10.0.129.3" --port 5022  --syncmode "full" --nodiscover --http --http.port "5003" --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "personal,eth,net,web3,txpool,miner" --authrpc.addr "0.0.0.0" --authrpc.port "6003" --allow-insecure-unlock --unlock 0x0C6c3863aF1DA72eD715ca9f0832D936D8A3Fc27 console
   ```
   
   以下命令啟動 node2 的以太坊，讓 Remix 可以透過 http://127.0.0.1:5003 連結
   ```
-  geth --datadir node2 --networkid 12345 --port 30307 --syncmode "full" --nodiscover --http --http.port "5003" --http.addr "0.0.0.0" --http.corsdomain "https://remix.ethereum.org" --vmdebug --http.api "personal,db,eth,net,web3,txpool,miner,debug" --authrpc.addr "0.0.0.0" --authrpc.port "6003" --allow-insecure-unlock --unlock 0xNODE2NODE2NODE2NODE2NODE2NODE2NODE2NODE2 --password node1/password.txt --dev console
+   geth --datadir node2 --networkid 12345 --port 30307 --syncmode "full" --nodiscover --http --http.port "5003" --http.addr "0.0.0.0" --http.corsdomain "https://remix.ethereum.org" --vmdebug --http.api "personal,db,eth,net,web3,txpool,miner,debug" --authrpc.addr "0.0.0.0" --authrpc.port "6003" --allow-insecure-unlock --unlock 0x0C6c3863aF1DA72eD715ca9f0832D936D8A3Fc27 console
   ```
 
   請注意，這個指令中的 "0xNODE2NODE2NODE2NODE2NODE2NODE2NODE2NODE2" 應該被替換為創建 node2 帳戶時得到的“密鑰的公共地址”。
   
 3. 請在 node3 的電腦開啟一個 Ubuntu 命令視窗，並輸入以下指令來啟動 node3 的以太坊節點
   ```
-  geth --datadir node3 --networkid 12345 --port 30308 --syncmode "full" --nodiscover --http --http.port "5004" --http.addr "0.0.0.0" --http.corsdomain "*"  --http.api "personal,db,eth,net,web3,txpool,miner" --authrpc.addr "0.0.0.0" --authrpc.port "6004" --allow-insecure-unlock --unlock 0xNODE3NODE3NODE3NODE3NODE3NODE3NODE3NODE3 --password password.txt console
+   geth --datadir node3 --networkid 12345 --nat extip:"10.0.129.4" --port 5023 --syncmode "full" --nodiscover --http --http.port "5004" --http.addr "0.0.0.0" --http.corsdomain "*" --http.api "personal,eth,net,web3,txpool,miner" --authrpc.addr "0.0.0.0" --authrpc.port "6004" --allow-insecure-unlock --unlock 0x3c5C5b13f82e04Bf952E399b196a6AAE08b2f07C console
   ```
 
   以下命令啟動 node3 的以太坊，讓 Remix 可以透過 http://127.0.0.1:5004 連結
   ```
-  geth --datadir node3 --networkid 12345 --port 30308 --syncmode "full" --nodiscover --http --http.port "5004" --http.addr "0.0.0.0" --http.corsdomain "https://remix.ethereum.org" --vmdebug --http.api "personal,db,eth,net,web3,txpool,miner,debug" --authrpc.addr "0.0.0.0" --authrpc.port "6004" --allow-insecure-unlock --unlock 0xNODE3NODE3NODE3NODE3NODE3NODE3NODE3NODE3 --password node1/password.txt --dev console
+   geth --datadir node3 --networkid 12345 --port 30308 --syncmode "full" --nodiscover --http --http.port "5004" --http.addr "0.0.0.0" --http.corsdomain "https://remix.ethereum.org" --vmdebug --http.api "personal,db,eth,net,web3,txpool,miner,debug" --authrpc.addr "0.0.0.0" --authrpc.port "6004" --allow-insecure-unlock --unlock 0x3c5C5b13f82e04Bf952E399b196a6AAE08b2f07C console
   ```
   
   請注意，這個指令中的 "0xNODE3NODE3NODE3NODE3NODE3NODE3NODE3NODE3" 應該被替換為創建 node3 帳戶時得到的“密鑰的公共地址”。
@@ -176,26 +179,72 @@ admin.addPeer(此處請填 node3 的 enode 位址)
 
    請注意，上述動作需要在 node2 和 node3 中各運作一次，來設定 node1 和 node3 成為 node2 的夥伴，以及設定 node1 和 node3 成為 node2 的夥伴。成功後，node1、node2、和 node3 就形成一個以 node1 為主點的私有以太坊。
 
+   node1:
+   ```
+      admin.addPeer("enode://d5a4a280cd254f16bcbc61d0556d103d76ed2a33dde4fd20d6fcb496c554970fa53e560564b435e71fc9260cb912bd78f36c56a0651e5533b06785ba41686c53@10.0.129.3:5022?discport=0")
+      admin.addPeer("enode://d00c9735a256dd651f9a56d9a2dea4ee5f13301487d1a77801677bbd8ff50fdc029a60d5068f5df99f8ae4ee50ef74c6c1ed5d349b460c7e0f01d537458b5213@10.0.129.4:5023?discport=0") 
+   ``` 
+   node2:
+   ```
+      admin.addPeer("enode://de558f69abdd15b8c082e77af7bb6a7de9109c017ea5a653f2fca8d223659f15fa56f45b86d7acafd6739ac2a516da5533fc864bdb9449cc2cd67dce7d0d7d1c@10.0.129.2:5021?discport=0")
+      admin.addPeer("enode://d00c9735a256dd651f9a56d9a2dea4ee5f13301487d1a77801677bbd8ff50fdc029a60d5068f5df99f8ae4ee50ef74c6c1ed5d349b460c7e0f01d537458b5213@10.0.129.4:5023?discport=0")
+   ``` 
+   node3:
+   ```
+      admin.addPeer("enode://de558f69abdd15b8c082e77af7bb6a7de9109c017ea5a653f2fca8d223659f15fa56f45b86d7acafd6739ac2a516da5533fc864bdb9449cc2cd67dce7d0d7d1c@10.0.129.2:5021?discport=0")
+      admin.addPeer("enode://d5a4a280cd254f16bcbc61d0556d103d76ed2a33dde4fd20d6fcb496c554970fa53e560564b435e71fc9260cb912bd78f36c56a0651e5533b06785ba41686c53@10.0.129.3:5022?discport=0") 
+   ``` 
+
 3. 接下來，在各節點進行挖礦前，我們必須告訴各節點，這個私有以太坊的挖礦動作是由三個節點合作輪流挖礦。請進入各節點的 Geth 環境內，輸入以下 Geth 指令。例如，進入 node1 的 Geth 環境後，輸入以下 Geth 指令。
 
   ```
   clique.propose(此處請填 node2 密鑰的公共地址, true) 
   clique.propose(此處請填 node3 密鑰的公共地址, true) 
-   範例: 
-  clique.propose('0xNODE2NODE2NODE2NODE2NODE2NODE2NODE2NODE2', true)
-  clique.propose('0xNODE3NODE3NODE3NODE3NODE3NODE3NODE3NODE3', true)
   ```
  
    請注意在 node1 密鑰的公共地址前後要加上雙引號，並且上述動作需要在 node2 和 node3 中各運作一次，來設定 讓 node1、node2、和 node3 合作輪流挖礦。 
+
+   node1:
+   ```
+      clique.propose("0xBd367d52531889EbCBA1F53B47FB75ED334262b0", true)
+      clique.propose("0x0C6c3863aF1DA72eD715ca9f0832D936D8A3Fc27", true)
+      clique.propose("0x3c5C5b13f82e04Bf952E399b196a6AAE08b2f07C", true)
+   ``` 
+   node2:
+   ```
+      clique.propose("0xBd367d52531889EbCBA1F53B47FB75ED334262b0", true)
+      clique.propose("0x0C6c3863aF1DA72eD715ca9f0832D936D8A3Fc27", true)
+      clique.propose("0x3c5C5b13f82e04Bf952E399b196a6AAE08b2f07C", true)
+   ``` 
+   node3:
+   ```
+      clique.propose("0xBd367d52531889EbCBA1F53B47FB75ED334262b0", true)
+      clique.propose("0x0C6c3863aF1DA72eD715ca9f0832D936D8A3Fc27", true)
+      clique.propose("0x3c5C5b13f82e04Bf952E399b196a6AAE08b2f07C", true)
+   ``` 
    
 4. 接下來，我們就可以啟動個節點的挖礦動作，請進入各節點的 Geth 環境內，輸入以下 Geth 指令。例如，進入 node1 的 Geth 環境後，輸入以下 Geth 指令。
   ```
    miner.setEtherbase(此處請填 node1 密鑰的公共地址) 
    miner.start()
-   範例: 
-   miner.setEtherbase('0xNODE1NODE1NODE1NODE1NODE1NODE1NODE1NODE1')
   ```
   請注意在 node1 密鑰的公共地址前後要加上雙引號，並且上述動作需要在 node2 和 node3 中各運作一次
+  
+  node1:
+   ```
+      miner.setEtherbase("0xBd367d52531889EbCBA1F53B47FB75ED334262b0")
+      miner.start()
+   ``` 
+   node2:
+   ```
+      miner.setEtherbase("0x0C6c3863aF1DA72eD715ca9f0832D936D8A3Fc27")
+      miner.start()
+   ``` 
+   node3:
+   ```
+      miner.setEtherbase("0x3c5C5b13f82e04Bf952E399b196a6AAE08b2f07C")
+      miner.start()
+   ```
 
 # 肆. 上傳智能合約到私有以太坊的主要節點 node1
 
@@ -310,6 +359,7 @@ admin.addPeer(此處請填 node3 的 enode 位址)
 2. 安裝 visual code 
 
    (1)下載 https://code.visualstudio.com/Download
+
    (2)安裝
       ```
       sudo dpkg -i 下載的安裝檔名稱
@@ -319,6 +369,10 @@ admin.addPeer(此處請填 node3 的 enode 位址)
    (3)開啟 VS Code
       ```
       code
+      ```
+   (4)執行程式碼
+      ```
+      python3 fileName.py
       ```
 
 3. 在 Ubuntu 命令視窗中，透過以下指令來在 search 資料庫中建立本計畫程式所需要的基本數據，指令如下：
