@@ -1,0 +1,343 @@
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/dailyUpload.py", line 6, in <module>
+    import schedule
+ModuleNotFoundError: No module named 'schedule'
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/dailyUpload.py", line 6, in <module>
+    import schedule
+ModuleNotFoundError: No module named 'schedule'
+ * Serving Flask app 'app.py'
+ * Debug mode: off
+[2023-11-03 14:21:52,227] ERROR in app: Exception on /get_options [GET]
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 138, in read_data_from_sqlite
+    cursor.execute("SELECT upload_time, transaction_hash FROM upload_record ORDER BY upload_time DESC")
+sqlite3.OperationalError: no such column: upload_time
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/soiclocaladmin/BlockChain-main/app.py", line 70, in get_options
+    options = read_data_from_sqlite()
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 153, in read_data_from_sqlite
+    file.write("Error:", e)
+TypeError: TextIOWrapper.write() takes exactly one argument (2 given)
+[2023-11-03 14:29:20,737] ERROR in app: Exception on /get_options [GET]
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 138, in read_data_from_sqlite
+    cursor.execute("SELECT upload_time, transaction_hash FROM upload_record ORDER BY upload_time DESC")
+sqlite3.OperationalError: no such column: upload_time
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/soiclocaladmin/BlockChain-main/app.py", line 70, in get_options
+    options = read_data_from_sqlite()
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 153, in read_data_from_sqlite
+    file.write("Error:", e)
+TypeError: TextIOWrapper.write() takes exactly one argument (2 given)
+[2023-11-03 14:38:47,332] ERROR in app: Exception on /get_options [GET]
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 138, in read_data_from_sqlite
+    cursor.execute("SELECT upload_time, transaction_hash FROM upload_record ORDER BY upload_time DESC")
+sqlite3.OperationalError: no such column: upload_time
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/soiclocaladmin/BlockChain-main/app.py", line 70, in get_options
+    options = read_data_from_sqlite()
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 153, in read_data_from_sqlite
+    file.write("Error:", e)
+TypeError: TextIOWrapper.write() takes exactly one argument (2 given)
+ * Serving Flask app 'app.py'
+ * Debug mode: off
+[2023-11-03 14:40:33,396] ERROR in app: Exception on /get_options [GET]
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 138, in read_data_from_sqlite
+    cursor.execute("SELECT upload_time, transaction_hash FROM upload_record ORDER BY upload_time DESC")
+sqlite3.OperationalError: no such column: upload_time
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/soiclocaladmin/BlockChain-main/app.py", line 70, in get_options
+    options = read_data_from_sqlite()
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 153, in read_data_from_sqlite
+    file.write("Error:", e)
+TypeError: TextIOWrapper.write() takes exactly one argument (2 given)
+[2023-11-03 14:40:34,225] ERROR in app: Exception on /get_options [GET]
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 138, in read_data_from_sqlite
+    cursor.execute("SELECT upload_time, transaction_hash FROM upload_record ORDER BY upload_time DESC")
+sqlite3.OperationalError: no such column: upload_time
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/soiclocaladmin/BlockChain-main/app.py", line 70, in get_options
+    options = read_data_from_sqlite()
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 153, in read_data_from_sqlite
+    file.write("Error:", e)
+TypeError: TextIOWrapper.write() takes exactly one argument (2 given)
+[2023-11-03 14:43:23,992] ERROR in app: Exception on /get_options [GET]
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 138, in read_data_from_sqlite
+    cursor.execute("SELECT upload_time, transaction_hash FROM upload_record ORDER BY upload_time DESC")
+sqlite3.OperationalError: no such column: upload_time
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/soiclocaladmin/BlockChain-main/app.py", line 70, in get_options
+    options = read_data_from_sqlite()
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 153, in read_data_from_sqlite
+    file.write("Error:", e)
+TypeError: TextIOWrapper.write() takes exactly one argument (2 given)
+[2023-11-03 14:43:27,090] ERROR in app: Exception on /get_options [GET]
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 138, in read_data_from_sqlite
+    cursor.execute("SELECT upload_time, transaction_hash FROM upload_record ORDER BY upload_time DESC")
+sqlite3.OperationalError: no such column: upload_time
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/soiclocaladmin/BlockChain-main/app.py", line 70, in get_options
+    options = read_data_from_sqlite()
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 153, in read_data_from_sqlite
+    file.write("Error:", e)
+TypeError: TextIOWrapper.write() takes exactly one argument (2 given)
+ * Serving Flask app 'app.py'
+ * Debug mode: off
+[2023-11-03 14:53:00,090] ERROR in app: Exception on /get_options [GET]
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 138, in read_data_from_sqlite
+    cursor.execute("SELECT upload_time, transaction_hash FROM upload_record ORDER BY upload_time DESC")
+sqlite3.OperationalError: no such column: upload_time
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/soiclocaladmin/BlockChain-main/app.py", line 70, in get_options
+    options = read_data_from_sqlite()
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 153, in read_data_from_sqlite
+    file.write("Error:", e)
+TypeError: TextIOWrapper.write() takes exactly one argument (2 given)
+[2023-11-03 14:53:04,721] ERROR in app: Exception on /get_options [GET]
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 138, in read_data_from_sqlite
+    cursor.execute("SELECT upload_time, transaction_hash FROM upload_record ORDER BY upload_time DESC")
+sqlite3.OperationalError: no such column: upload_time
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/soiclocaladmin/BlockChain-main/app.py", line 70, in get_options
+    options = read_data_from_sqlite()
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 153, in read_data_from_sqlite
+    file.write("Error:", e)
+TypeError: TextIOWrapper.write() takes exactly one argument (2 given)
+[2023-11-03 14:54:24,408] ERROR in app: Exception on /get_options [GET]
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 138, in read_data_from_sqlite
+    cursor.execute("SELECT upload_time, transaction_hash FROM upload_record ORDER BY upload_time DESC")
+sqlite3.OperationalError: no such column: upload_time
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/soiclocaladmin/BlockChain-main/app.py", line 70, in get_options
+    options = read_data_from_sqlite()
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 153, in read_data_from_sqlite
+    file.write("Error:", e)
+TypeError: TextIOWrapper.write() takes exactly one argument (2 given)
+[2023-11-03 15:01:16,697] ERROR in app: Exception on /get_options [GET]
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 138, in read_data_from_sqlite
+    cursor.execute("SELECT upload_time, transaction_hash FROM upload_record ORDER BY upload_time DESC")
+sqlite3.OperationalError: no such column: upload_time
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/soiclocaladmin/BlockChain-main/app.py", line 70, in get_options
+    options = read_data_from_sqlite()
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 153, in read_data_from_sqlite
+    file.write("Error:", e)
+TypeError: TextIOWrapper.write() takes exactly one argument (2 given)
+[2023-11-03 15:49:56,751] ERROR in app: Exception on /get_options [GET]
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 138, in read_data_from_sqlite
+    # Execute the query to retrieve data
+sqlite3.OperationalError: no such column: upload_time
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/soiclocaladmin/BlockChain-main/app.py", line 70, in get_options
+    options = read_data_from_sqlite()
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 153, in read_data_from_sqlite
+    # 遍历所有字段并将其写入文件
+TypeError: TextIOWrapper.write() takes exactly one argument (2 given)
+[2023-11-03 15:49:58,161] ERROR in app: Exception on /get_options [GET]
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 138, in read_data_from_sqlite
+    # Execute the query to retrieve data
+sqlite3.OperationalError: no such column: upload_time
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/soiclocaladmin/BlockChain-main/app.py", line 70, in get_options
+    options = read_data_from_sqlite()
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 153, in read_data_from_sqlite
+    # 遍历所有字段并将其写入文件
+TypeError: TextIOWrapper.write() takes exactly one argument (2 given)
+[2023-11-03 15:50:02,018] ERROR in app: Exception on /get_options [GET]
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 138, in read_data_from_sqlite
+    # Execute the query to retrieve data
+sqlite3.OperationalError: no such column: upload_time
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/soiclocaladmin/BlockChain-main/app.py", line 70, in get_options
+    options = read_data_from_sqlite()
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 153, in read_data_from_sqlite
+    # 遍历所有字段并将其写入文件
+TypeError: TextIOWrapper.write() takes exactly one argument (2 given)
+[2023-11-03 16:32:32,617] ERROR in app: Exception on /get_options [GET]
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 138, in read_data_from_sqlite
+sqlite3.OperationalError: no such column: upload_time
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 2528, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1825, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1823, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/soiclocaladmin/.local/lib/python3.10/site-packages/flask/app.py", line 1799, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "/home/soiclocaladmin/BlockChain-main/app.py", line 70, in get_options
+    options = read_data_from_sqlite()
+  File "/home/soiclocaladmin/BlockChain-main/python_function.py", line 153, in read_data_from_sqlite
+    with open(file_name, 'w') as file:
+TypeError: TextIOWrapper.write() takes exactly one argument (2 given)
