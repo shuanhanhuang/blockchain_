@@ -1,5 +1,0 @@
-eth-abi==4.0.0
-Flask==2.2.3
-Flask-SQLAlchemy==3.0.3
-python_version == 3.10.6
-web3==6.2.0

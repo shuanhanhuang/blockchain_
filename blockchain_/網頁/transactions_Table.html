@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電子研究紀錄從以太坊下載頁面</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        button {
+            display: inline-block;
+            padding: 5px 12px;
+            /* Adjust as per your need */
+            background-color: #1383eb;
+            color: #fff;
+            /* Text color */
+            border: none;
+            /* No border */
+            border-radius: 100px;
+            /* Rounded corners */
+            font-size: 16px;
+            /* Adjust as per your need */
+            cursor: pointer;
+            /* Hand cursor on hover */
+            /* Smooth transition for hover effect */
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            position: relative;
+            /* To allow for the transform to work */
+        }
+
+        button:hover {
+            background-color: #002877;
+            /* Slightly darker shade for hover */
+        }
+
+        button:active {
+            background-color: #001B4D;
+            /* Even darker shade for active/click effect */
+            transform: translateY(3px);
+            /* Moves the button slightly downwards when active */
+        }
+
+        button:disabled {
+            background-color: #7F9BCD;
+            /* Lighter shade when button is disabled */
+            cursor: not-allowed;
+            /* No action cursor */
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 3px solid black;
+            white-space: nowrap;
+        }
+
+        thead {
+            background-color: #f58b00;
+        }
+
+        th {
+            background-color: #f58b00;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            white-space: nowrap;
+            /* Remove the border */
+            border: 2;
+        }
+
+
+        /* Add a top border using before pseudo-element */
+        th:before {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -3px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: black;
+            z-index: 1;
+        }
+
+        /* Add a bottom border using after pseudo-element */
+        th:after {
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: black;
+        }
+
+        .table-container {
+            overflow: auto;
+            /* Allows both horizontal and vertical scroll */
+            max-height: 400px;
+            width: 100%;
+            max-width: 100%
+                /* You can adjust this as needed */
+        }
+
+        tr:nth-child(odd) {
+            background-color: #f3f1ed;
+            /* light gray color */
+        }
+
+        /* Set background color for even rows (optional, if you want a different color) */
+        tr:nth-child(even) {
+            background-color: #dda981;
+            /* white color */
+        }
+    </style>
+</head>
+
+<body bgcolor="orange">
+    <table align="center" style="border:0px; width:80%; margin-bottom: 1%;" bgcolor="orange">
+        <tr align:"center" border="0" style="border:0px; background-color: orange;">
+            <td colspan="3" style="border:0px;" align="center">
+                <h1>請輸入搜尋條件並從下列電子研究簿資料紀錄中選擇一筆下載</h1>
+            </td>
+        </tr>
+        <tr align:"center">
+            <td border="" style="border:0px; background-color: orange">
+                案號：<input type="text" id="belong_prj_no" style="margin-right:1%;">
+				撰寫人：<input type="text" id="belong_mb_name" style="margin-right:1%;">
+				標籤：<input style="margin-right:1%;" type="text" id="tag">
+				<select style="margin-right:1%;" id="myDropdown">
+                    <option value="prompt">請選擇一筆電子研究簿資料</option>
+                    <!-- <option id="1" selected="selected">2023-09-14 15:29:01,0x8e6ec7b4a682ed5d7cd73ef03b229c9384671ebda26571440302b1cb5805129d</option>-->
+                </select>
+				<button class="btn btn-primary" id="downloadBtn">從以太坊讀取資料</button>		
+            </td>
+        </tr>
+    </table>
+
+    <div id="myTable" class="table-container" style="margin-bottom: 0.5%;">
+
+    </div>
+    <center style="margin-bottom: 1%;"><span id="rowcount">共 0 筆</span></center>
+    <center><button justify-content: center; class="btn btn-primary" id="refreshBtn">更新上傳紀錄</button></center>
+    <script>
+        const dropdown = document.getElementById('myDropdown');
+        const selectedOption = document.getElementById('selectedOption');
+		jsonData = "";
+		
+        // Function to fetch and populate the dropdown options
+        function populateDropdown() {
+            fetch('/get_options')  // Fetch options from the correct route
+                .then(response => response.json())
+                .then(data => {
+                    // Add a default option with the text "----options----" and a disabled attribute
+                    const defaultOption = document.createElement('option');
+                    defaultOption.value = "";
+                    defaultOption.disabled = true;
+                    dropdown.appendChild(defaultOption);
+        
+                    data.options.forEach(option => {
+                        const optionElement = document.createElement('option');
+                        optionElement.value = option;
+                        optionElement.textContent = option;
+                        dropdown.appendChild(optionElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+
+        // Call the function to populate the dropdown when the page loads
+         window.onload = function() {
+            populateDropdown();
+         };
+        
+        downloadBtn.addEventListener('click', () => {
+            const selectedValue = dropdown.value;
+ 			//console.log("selectedValue = "+selectedValue); 
+			
+			// Send the selected value to the server
+            fetch(`/find_data?selectedValue=${selectedValue}`, {
+                method: 'GET',
+				}).then(response => response.json())
+				.then(data => {
+					// Display the result in the resultBox
+					//console.log("data = "+JSON.stringify(data, null, 2));
+					//console.log("data.result = "+JSON.stringify(data.result, null, 2));
+					console.log("data[0] = "+data[0]);
+					console.log("data[1] = "+data[1]);
+					console.log("data.result = "+data.result);
+					//document.getElementById('resultBox').value = data.result;
+
+					jsonData = JSON.parse(data.result).data;//JSON.parse(data.result); 
+					
+					// 過濾資料
+					// 通过 id 获取 input 元素，再获取 input 元素的值
+					const searchTerm1 = document.getElementById("belong_prj_no").value; // 第一個欄位的搜索關鍵詞
+					const searchTerm2 = document.getElementById("belong_mb_name").value; // 第二個欄位的搜索關鍵詞
+					const searchTerm3 = document.getElementById("tag").value; // 第三個欄位的搜索關鍵詞
+					
+					console.log ("searchTerm1 = " + searchTerm1 + ", searchTerm2 = " + searchTerm2 + ", searchTerm3 = " + searchTerm3);
+
+					if (Array.isArray(jsonData)) {
+						console.log("Yes");
+					}
+					else
+					   	console.log("No");
+					console.log("jsonData[0].title = "+ jsonData[0].title);
+					//console.log("JSON.stringify(data.result.data) = "+ JSON.stringify(data.result.data));
+						
+					const filteredData = jsonData.filter(item => {
+					    // 使用正则表达式检查 belong_prj_no  欄位是否包含关键词1（不区分大小写），只有當 searchTerm1 不是空字串時才進行檢索  
+					    const regex1 = searchTerm1.trim() !== '' ? new RegExp(searchTerm1, 'i') : false;
+					  
+					    // 使用正则表达式检查 belong_mb_name  欄位是否包含关键词2（不区分大小写），只有當 searchTerm2 不是空字串時才進行檢索
+					    const regex2 = searchTerm2.trim() !== '' ? new RegExp(searchTerm2, 'i') : false;
+
+					    // 使用正则表达式检查 tag  欄位是否包含关键词3（不区分大小写），只有當 searchTerm2 不是空字串時才進行檢索
+					    const regex3 = searchTerm3.trim() !== '' ? new RegExp(searchTerm3, 'i') : false;
+						
+						console.log ("regex1 = " + regex1 + ", regex2 = " + regex2 + ", regex3 = " + regex3);
+					  
+					    // 如果 searchTerm1, searchTerm2, searchTerm3 不是空字串，則三個欄位必須分別符合 searchTerm1, searchTerm2, searchTerm3
+						console.log("item.belong_prj_no = " + item.belong_prj_no);
+						console.dir(item);
+					    return ((!regex1 || regex1.test(item.belong_prj_no)) && (!regex2 || regex2.test(item.belong_mb_name)) && (!regex3 || regex3.test(item.tag)));
+					});
+
+					console.log("filteredData[0] = " + filteredData[0]);
+					
+					InsertTable(filteredData);
+				})
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+		
+		// Get a reference to the button element
+        var refreshBtn = document.getElementById('refreshBtn');
+
+        // Add a click event listener to the button
+        refreshBtn.addEventListener('click', function() {
+            // Use the location.reload() method to refresh the page
+            location.reload();
+        });
+
+		function InsertTable(filteredData) {
+			//alert(jsonData)
+			//console.log("filteredData[0].belong_prj_no = " + filteredData[0].belong_prj_no); // 输出 "588"
+			//console.log("filteredData[1].title = " + filteredData[1].title); // 输出 "588測試研究2"
+			//var jsonObj = jsonData;//JSON.parse(jsonData[0]);
+		
+            var table = $("<table/>").addClass("table");
+            var headerRow = $("<tr/>");
+            table.append(headerRow);
+
+            // Add the headers
+            $.each(filteredData[0], function(key, value) {
+                var headerCell = $("<th/>").text(key);
+                headerRow.append(headerCell);
+            });
+
+            // Add the data rows
+            $.each(filteredData, function(index, row) {
+                var dataRow = $("<tr/>");
+                table.append(dataRow);
+
+                $.each(row, function(key, value) {
+                    var dataCell = $("<td/>").text(value);
+                    dataRow.append(dataCell);
+                });
+            });
+
+
+			// Assuming you have an HTML table with the id "myTable"
+			const tabley = document.getElementById("myTable");
+			tabley.innerHTML = "";
+
+			// Get all rows within the table
+			//const rowsy = tabley.getElementsByTagName("tr");
+
+			// Loop through the rows in reverse order and remove them
+			//for (let i = rowsy.length - 1; i >= 0; i--) {
+			//	tabley.deleteRow(i);
+
+            // Insert the table into the HTML page
+            $("#myTable").append(table);
+			
+			// 獲取對表格的引用（假設表格有一個唯一的ID，例如 "myTable"）
+			var tablex = document.querySelector("#myTable");
+            // 先刪掉Table
+			//var htmlx = tablex.innerHTML;
+			//tablex.innerHTML = "";
+			//console.log(htmlx);
+			// 獲取表格中的所有行
+			var rows = tablex.getElementsByTagName("tr");		
+			// 輸出行的數量
+			console.log("表格中的行數：" + rows.length);
+			// 獲取對<span>元素的引用（假設該元素有一個唯一的ID，例如 "mySpan"）
+			var span = document.getElementById("rowcount");
+			// 更改<span>元素中的文本
+			span.textContent = "共" + String(rows.length - 1) + " 筆";		
+        }
+
+		function InsertTable_Json() {
+			//alert(jsonData)
+			console.log("jsonData.success_msg = "+jsonData.success_msg); // 输出 "獲取資料成功"
+			console.log("jsonData.data[0].title = "+jsonData.data[0].title); // 输出 "588測試研究1"
+			var jsonObj = jsonData;//JSON.parse(jsonData[0]);
+		
+            var table = $("<table/>").addClass("table");
+            var headerRow = $("<tr/>");
+            table.append(headerRow);
+
+            // Add the headers
+            $.each(jsonObj.data[0], function(key, value) {
+                var headerCell = $("<th/>").text(key);
+                headerRow.append(headerCell);
+            });
+
+            // Add the data rows
+            $.each(jsonObj.data, function(index, row) {
+                var dataRow = $("<tr/>");
+                table.append(dataRow);
+
+                $.each(row, function(key, value) {
+                    var dataCell = $("<td/>").text(value);
+                    dataRow.append(dataCell);
+                });
+            });
+
+            // Insert the table into the HTML page
+            $("#myTable").append(table);
+			
+			var tablex = document.querySelector("#myTable");
+			var htmlx = tablex.innerHTML;
+			console.log(htmlx);
+        }
+    </script>
+</body>
+</html>
